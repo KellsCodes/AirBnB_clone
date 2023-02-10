@@ -53,12 +53,9 @@ class HBNBCommand(cmd.Cmd):
     """ The HBNH console """
 
 
-    intro = "\nWelcome to AirBnB Command line. Type 'help' or '?' to list
+    intro = "\nWelcome to AirBnB Command line. Type 'help' or '?' to list commands\n"
 
-    commands\n"
-
-    prompt = '(hbnb) '
-
+    prompt = '(hbnb)'
 
     def do_EOF(self, arg):
 
