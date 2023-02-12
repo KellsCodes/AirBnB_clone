@@ -38,4 +38,4 @@ class BaseModel:
             keys/values of __dict__ of the instance
         """
         self.__class__ = self.__class__.__name__
-        return self
+        return self.__dict__
