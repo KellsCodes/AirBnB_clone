@@ -10,7 +10,7 @@ import datetime
 
 
 def dateTime():
-    return datetime.datetime.now().isoformat()
+    return datetime.utcnow()
 
 
 class BaseModel:
@@ -37,5 +37,12 @@ class BaseModel:
             returns a dictionary containing all 
             keys/values of __dict__ of the instance
         """
-        self['__class__'] = self.__class__.__name__
-        return self.__dict__
+        my_obj = {}
+        for key, value in self.__dict__.items():
+            if key == "created_at" or "updated_at":
+                my_obj[key] = value.isoformat()
+            else:
+                my_obj[key] = value
+
+        my_obj['__class__'] = self.__class__.__name__
+        return my_obj
