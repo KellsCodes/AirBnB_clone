@@ -13,18 +13,6 @@ from os.path import exists
 
 from models.base_model import BaseModel
 
-# from models.user import User
-
-# from models.state import State
-
-# from models.amenity import Amenity
-
-# from models.city import City
-
-# from models.place import Place
-
-# from models.review import Review
-
 
 class FileStorage:
 
@@ -91,33 +79,3 @@ class FileStorage:
                         self.new(eval(cls)(**value))
             except Exception:
                 pass
-
-            # for keys in decereal.keys():
-
-            #     if decereal[keys]['__class__'] == "BaseModel":
-
-            #         self.__objects[keys] = BaseModel(**decereal[keys])
-
-                # elif decereal[keys]['__class__'] == "User":
-
-                # self.__objects[keys] = User(**decereal[keys])
-
-                # elif decereal[keys]['__class__'] == "State":
-
-                # self.__objects[keys] = State(**decereal[keys])
-
-                # elif decereal[keys]['__class__'] == "City":
-
-                # self.__objects[keys] = City(**decereal[keys])
-
-                # elif decereal[keys]['__class__'] == "Amenity":
-
-                #     self.__objects[keys] = Amenity(**decereal[keys])
-
-                # elif decereal[keys]['__class__'] == "Place":
-
-                #     self.__objects[keys] = Place(**decereal[keys])
-
-                # elif decereal[keys]['__class__'] == "Review":
-
-                # self.__objects[keys] = Review(**decereal[keys])
