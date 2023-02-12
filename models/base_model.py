@@ -37,9 +37,5 @@ class BaseModel:
             returns a dictionary containing all 
             keys/values of __dict__ of the instance
         """
-        my_object = {}
-        for key, value in self.__dict__.items():
-            my_object[key] = value
-
-        my_object["__class__"] = self.__class__.__name__
-        return my_object
+        self.__class__ = self.__class__.__name__
+        return self
