@@ -2,7 +2,7 @@
 
 """
 
-Contains the FileStorage class model
+The FileStorage class model
 
 """
 
@@ -13,17 +13,17 @@ from os.path import exists
 
 from models.base_model import BaseModel
 
-from models.user import User
+# from models.user import User
 
-from models.state import State
+# from models.state import State
 
-from models.amenity import Amenity
+# from models.amenity import Amenity
 
-from models.city import City
+# from models.city import City
 
-from models.place import Place
+# from models.place import Place
 
-from models.review import Review
+# from models.review import Review
 
 
 class FileStorage:
@@ -36,14 +36,11 @@ class FileStorage:
 
     """
 
-
     __file_path = "file.json"
 
     __objects = {}
 
-
     def all(self):
-
         """
 
         Returns the dictionary __objects
@@ -52,9 +49,7 @@ class FileStorage:
 
         return self.__objects
 
-
     def new(self, obj):
-
         """
 
         sets in __objects the `obj` with key <obj class name>.id
@@ -63,9 +58,7 @@ class FileStorage:
 
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
-
     def save(self):
-
         """
 
         Serialize __objects to the JSON file
@@ -82,45 +75,49 @@ class FileStorage:
 
             json.dump(dict_storage, jsonfile)
 
-
     def reload(self):
-
         """deserializes the JSON file to __objects"""
 
-        
-
         if exists(self.__file_path):
+            """
+            deserializes the JSON file to __objects, if the json file
+            exists, else do nothing
+            """
+            try:
+                with open(self.__file_path, 'r') as jsonfile:
+                    dict = json.loads(jsonfile)
+                    for value in dict.values():
+                        cls = value["__class__"]
+                        self.new(eval(cls)(**value))
+            except Exception:
+                pass
 
-            with open(self.__file_path) as jsonfile:
+            # for keys in decereal.keys():
 
-                decereal = json.load(jsonfile)
+            #     if decereal[keys]['__class__'] == "BaseModel":
 
-            for keys in decereal.keys():
+            #         self.__objects[keys] = BaseModel(**decereal[keys])
 
-                if decereal[keys]['__class__'] == "BaseModel":
+                # elif decereal[keys]['__class__'] == "User":
 
-                    self.__objects[keys] = BaseModel(**decereal[keys])
+                # self.__objects[keys] = User(**decereal[keys])
 
-                elif decereal[keys]['__class__'] == "User":
+                # elif decereal[keys]['__class__'] == "State":
 
-                    self.__objects[keys] = User(**decereal[keys])
+                # self.__objects[keys] = State(**decereal[keys])
 
-                elif decereal[keys]['__class__'] == "State":
+                # elif decereal[keys]['__class__'] == "City":
 
-                    self.__objects[keys] = State(**decereal[keys])
+                # self.__objects[keys] = City(**decereal[keys])
 
-                elif decereal[keys]['__class__'] == "City":
+                # elif decereal[keys]['__class__'] == "Amenity":
 
-                    self.__objects[keys] = City(**decereal[keys])
+                #     self.__objects[keys] = Amenity(**decereal[keys])
 
-                elif decereal[keys]['__class__'] == "Amenity":
+                # elif decereal[keys]['__class__'] == "Place":
 
-                    self.__objects[keys] = Amenity(**decereal[keys])
+                #     self.__objects[keys] = Place(**decereal[keys])
 
-                elif decereal[keys]['__class__'] == "Place":
+                # elif decereal[keys]['__class__'] == "Review":
 
-                    self.__objects[keys] = Place(**decereal[keys])
-
-                elif decereal[keys]['__class__'] == "Review":
-
-                    self.__objects[keys] = Review(**decereal[keys])
+                # self.__objects[keys] = Review(**decereal[keys])

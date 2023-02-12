@@ -2,6 +2,7 @@
 
 import uuid
 from datetime import datetime
+import models
 
 """
 Base model for all other classes
@@ -26,6 +27,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = dateTime()
             self.updated_at = dateTime()
+            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key in ("updated_at", "created_at"):
@@ -42,6 +44,7 @@ class BaseModel:
         saves/updates the created object instance
         """
         self.updated_at = dateTime()
+        models.storage.save(self)
 
     def to_dict(self):
         """
