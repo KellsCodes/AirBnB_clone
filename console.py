@@ -13,10 +13,16 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         "Exit"
         return True
-    
+
     def do_quit(self, line):
         "Exit"
         return True
+
+    def handle_empty_line(self, line):
+        """
+        Eliminates empty line execution
+        """
+        return False
 
 
 if __name__ == '__main__':
