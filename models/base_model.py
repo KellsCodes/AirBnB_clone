@@ -13,7 +13,8 @@ import datetime
 
 
 def dateTime():
-    return datetime.datetime.utcnow()
+    # return datetime.datetime.utcnow()
+    return datetime.datetime.utcnow().isoformat()
 
 
 class BaseModel:
@@ -42,10 +43,8 @@ class BaseModel:
         """
         my_obj = {}
         for key, value in self.__dict__.items():
-            if key == "created_at" or "updated_at":
-                my_obj[key] = value.isoformat()
-            else:
-                my_obj[key] = value
-        
+            print("{}: {}\n".format(key, value))
+            my_obj[key] = value
+
         my_obj['__class__'] = self.__class__.__name__
         return my_obj
