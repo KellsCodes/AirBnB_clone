@@ -39,6 +39,7 @@ class BaseModel:
         """
         my_obj = {}
         for key, value in self.__dict__.items():
+            print("{}: {}\n".format(key, value))
             my_obj[key] = value
 
         my_obj['__class__'] = self.__class__.__name__
