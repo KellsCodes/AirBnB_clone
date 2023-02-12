@@ -1,7 +1,7 @@
 #!/bin/usr/python3
 
 import uuid
-import datetime
+from datetime import datetime
 
 """
 Base model for all other classes
@@ -10,7 +10,7 @@ defines all common attributes/methods for other classes
 
 
 def dateTime():
-    return datetime.datetime.utcnow().isoformat()
+    return datetime.utcnow()
 
 
 class BaseModel:
@@ -39,8 +39,10 @@ class BaseModel:
         """
         my_obj = {}
         for key, value in self.__dict__.items():
-            print("{}: {}\n".format(key, value))
-            my_obj[key] = value
+            if key == "created_at" or key == "updated_at":
+                my_obj[key] = value.isoformat()
+            else:
+                my_obj[key] = value
 
         my_obj['__class__'] = self.__class__.__name__
         return my_obj
