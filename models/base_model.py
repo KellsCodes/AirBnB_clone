@@ -6,11 +6,14 @@ import datetime
 """
     Base model for all other classes
     defines all common attributes/methods for other classes
+    
+    import datetime
+    datetime.datetime.utcnow().isoformat()
 """
 
 
 def dateTime():
-    return datetime.utcnow()
+    return datetime.datetime.utcnow()
 
 
 class BaseModel:
@@ -43,6 +46,6 @@ class BaseModel:
                 my_obj[key] = value.isoformat()
             else:
                 my_obj[key] = value
-
+        
         my_obj['__class__'] = self.__class__.__name__
         return my_obj
