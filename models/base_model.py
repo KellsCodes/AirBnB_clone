@@ -50,7 +50,7 @@ class BaseModel:
         saves/updates the created object instance
         """
         self.updated_at = dateTime()
-        models.storage.save(self)
+        models.storage.save()
 
     def to_dict(self):
         """
