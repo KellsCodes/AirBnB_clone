@@ -48,7 +48,7 @@ class BaseModel:
 
     def to_dict(self):
         """
-        returns a dictionary containing all 
+        returns a dictionary containing all
         keys/values of __dict__ of the instance
         """
         my_obj = {}
