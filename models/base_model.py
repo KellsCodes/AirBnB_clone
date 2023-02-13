@@ -49,9 +49,9 @@ class BaseModel:
         Instance method
         saves/updates the created object instance
         """
-        pass
-        # self.updated_at = dateTime()
-        # models.storage.save()
+        self.updated_at = dateTime()
+        models.storage.save()
+        return True
 
     def to_dict(self):
         """
