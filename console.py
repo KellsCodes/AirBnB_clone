@@ -7,7 +7,6 @@ import cmd
 class HBNBCommand(cmd.Cmd):
     """Command processor; hbnb console"""
 
-    intro = "Welcome to AirBnB console. Type 'help' or '?' to list commands"
     prompt = '(hbnb) '
 
     def do_EOF(self, line):
