@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
         "Exit"
         return True
 
-    def emptyline(self, line):
+    def empty_line(self, line):
         """
         Eliminates empty line execution
         """
