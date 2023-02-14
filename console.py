@@ -17,12 +17,11 @@ class HBNBCommand(cmd.Cmd):
         "Exit"
         return True
 
-    # def do_empty_line(self, line):
-    #     """
-    #     Eliminates empty line execution
-    #     """
-    #     print("Hello")
-    #     pass
+    def emptyline(self):
+        """
+        Eliminates empty line execution
+        """
+        pass
 
 
 if __name__ == '__main__':
