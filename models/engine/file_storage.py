@@ -11,7 +11,7 @@ import json
 from os.path import exists
 
 
-from models.base_model import BaseModel
+# from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -53,7 +53,7 @@ class FileStorage:
 
         """
 
-        with open(self.__file_path, mode="w") as jsonfile:
+        with open(self.__file_path, mode="w+") as jsonfile:
 
             dict_storage = {}
 
@@ -64,7 +64,9 @@ class FileStorage:
             json.dump(dict_storage, jsonfile)
 
     def reload(self):
-        """deserializes the JSON file to __objects"""
+        """
+        deserializes the JSON file to __objects
+        """
 
         if exists(self.__file_path):
             """
@@ -73,7 +75,7 @@ class FileStorage:
             """
             try:
                 with open(self.__file_path, 'r') as jsonfile:
-                    dict = json.loads(jsonfile)
+                    dict = json.loads(jsonfile.read())
                     for value in dict.values():
                         cls = value["__class__"]
                         self.new(eval(cls)(**value))
