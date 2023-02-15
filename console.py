@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """The command line interpreter Cli"""
-# Author: @tonybnya
 """
 This module implements the entry point of the command line interpreter.
 """
