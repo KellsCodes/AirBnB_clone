@@ -66,6 +66,7 @@ def parse(line):
 
 class HBNBCommand(cmd.Cmd):
 
+<<<<<<< HEAD
     """
 
     Class definition for the AirBnB Console.
@@ -107,6 +108,9 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 
+=======
+    prompt = '(hbnb) '
+>>>>>>> dd9b6bb9b09bb64d3cbcada0ac291ac6c0e9abec
 
     def do_EOF(self, line):
 
@@ -124,8 +128,11 @@ class HBNBCommand(cmd.Cmd):
 
         return True
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dd9b6bb9b09bb64d3cbcada0ac291ac6c0e9abec
     def do_quit(self, line):
 
         """
@@ -139,6 +146,12 @@ class HBNBCommand(cmd.Cmd):
         """
 
         return True
+
+    def emptyline(self):
+        """
+        Eliminates empty line execution
+        """
+        pass
 
 
 
